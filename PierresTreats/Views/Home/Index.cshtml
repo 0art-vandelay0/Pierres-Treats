@@ -1,0 +1,36 @@
+@{
+
+    Layout = "_Layout";
+
+} @using PierresTreats.Models;
+
+<h1 id="home-page-title">Pierre's Treats</h1>
+
+<div id="home-page-overview">
+    <p>For your sweet treat needs!</p>
+    <p>
+        ---.
+    </p>
+    <p id="home-page-overview-disclaimer">
+        Use the links at the bottom of this page to navigate.
+    </p>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div id="nav-links">
+        <p>@Html.ActionLink("Treats", "Index", "Treats")</p>
+        <p>@Html.ActionLink("Flavors", "Index", "Flavors")</p>
+    </div>
+}
+else
+{
+    
+
+    <p id="empty-value-div">Please login or register to view or manage your order/account.</p>
+
+    <div id="empty-value-div">
+        <p>@Html.ActionLink("Register", "Register", "Account")  &nbsp;&nbsp;|&nbsp;&nbsp;  @Html.ActionLink("Log in", "Login", "Account")</p>
+    </div>
+}
+
