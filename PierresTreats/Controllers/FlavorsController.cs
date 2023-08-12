@@ -25,6 +25,11 @@ namespace PierresTreats.Controllers
         public async Task<ActionResult> Index()
         {
             string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            //             ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+            // #nullable enable
+            //             List<Flavor> userFlavors = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).Include(flavor => flavor.JoinEntities).ThenInclude(join => join.Treat).ToList();
+            // #nullable disable
+            //             return View(userFlavors);
             ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
             List<Flavor> userFlavors = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).Include(flavor => flavor.JoinEntities).ThenInclude(join => join.Treat).ToList();
             return View(userFlavors);
