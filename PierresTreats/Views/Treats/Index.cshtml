@@ -4,37 +4,63 @@
 
 <h1>Treats</h1>
 
-@if (@Model.Count == 0)
+@if (User.Identity.IsAuthenticated)
 {
-    <div id="empty-value-div">
-    <h3>There are currently no treats.</h3>
-    <p>
-        Add a Treat
-        <span id="inner-nav-link">@Html.ActionLink("HERE", "Create")</span> in
-        order to Add Flavors.
-    </p>
-</div>
+    @if (Model.Count == 0)
+    {
+        <p>
+            Add a Treat
+            <span id="inner-nav-link">@Html.ActionLink("HERE", "Create")</span> in
+            order to Add Flavors.
+        </p>
+    }
 
-    <div id="nav-links">
-    <p>@Html.ActionLink("Home", "Index", "Home")</p>
-</div>
-
+    <div id="nav-container">
+        <div id="dropdown-trigger">
+            <span>Menu</span>
+            <div id="dropdown-menu">
+                <div id="dropdown-links-container">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    @Html.ActionLink("Add Flavor", "Create", "Flavors")
+                    @Html.ActionLink("Add Treat", "Create", "Treats")
+                    @Html.ActionLink("View Flavors", "Index", "Flavors")
+                    @Html.ActionLink("View Treats", "Index", "Treats")
+                    @Html.ActionLink("Log Out", "Index", "Account")
+                </div>
+            </div>
+        </div>
+    </div>
 }
 else
 {
-    <div id="nav-links">
-    <p>@Html.ActionLink("Add Treat", "Create", "Treats")</p>
-    <p>@Html.ActionLink("Add Flavor", "Create", "Flavors")</p>
-    <p>@Html.ActionLink("Home", "Index", "Home")</p>
-</div>
+    <div id="nav-container">
+        <div id="dropdown-trigger">
+            <span>Menu</span>
+            <div id="dropdown-menu">
+                <div id="dropdown-links-container">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    @Html.ActionLink("View Flavors", "Index", "Flavors")
+                    @Html.ActionLink("View Treats", "Index", "Treats")
+                    @Html.ActionLink("Log In", "Login", "Account")
+                    @Html.ActionLink("Register", "Register", "Account")
+                </div>
+            </div>
+        </div>
+    </div>
 }
-<ul class="treat-flavor-link">
-    @foreach (Treat treat in Model)
-    {
-        <li>
-            @Html.ActionLink($"{treat.Name}", "Details", "Treats", new {id =
-        treat.TreatId})
-        </li>
-    }
-</ul>
 
+@if (Model.Count == 0)
+{
+    <h3>There are currently no treats.</h3>
+}
+else
+{
+    <ul class="treat-flavor-link">
+        @foreach (Treat treat in Model)
+        {
+            <li>
+                @Html.ActionLink($"{treat.Name}", "Details", "Treats", new {id = treat.TreatId})
+            </li>
+        }
+    </ul>
+}

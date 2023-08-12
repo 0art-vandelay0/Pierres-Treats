@@ -11,27 +11,53 @@
 
     @if (@Model.JoinEntities.Count == 0)
             {
-        <h3>This treat is not yet associated with any flavors.</h3>
+                            <h3>This treat is not yet associated with any flavors.</h3>
             }
             else
             {
-            <h3>Flavors:</h3>
-            <ul class="treat-flavor-link">
+                                <h3>Flavors:</h3>
+                                <ul class="treat-flavor-link">
                     @foreach (var flavor in Model.JoinEntities)
                     {
-                        <li class="list-margins">@Html.ActionLink($"{flavor.Flavor.Name}", "Details", "Flavors", new {id = flavor.FlavorId})</li>
+                                                        <li class="list-margins">@Html.ActionLink($"{flavor.Flavor.Name}", "Details", "Flavors", new {id = flavor.FlavorId})</li>
                     }
-            </ul>
+                                </ul>
             }
 </div>
 
+@if (User.Identity.IsAuthenticated)
+{
+        <p class="add-to-list">@Html.ActionLink("Add Flavor Here", "AddFlavor", "Treats", new {id = Model.TreatId})</p>
 
-<p class="add-to-list">@Html.ActionLink("Add Flavor Here", "AddFlavor", "Treats", new {id = Model.TreatId})</p>
-
-<div id="nav-links">
-
-    <p>@Html.ActionLink("Treats", "Index", "Treats")</p>
-    <p>@Html.ActionLink("Home", "Index", "Home")</p>
-    <p>@Html.ActionLink("Edit Treat", "Edit", "Treats", new { id = Model.TreatId })</p>
-    <p>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</p>
-</div>
+        <div id="nav-container">
+            <div id="dropdown-trigger">
+                <span>Menu</span>
+                <div id="dropdown-menu">
+                    <div id="dropdown-links-container">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    @Html.ActionLink("Add Flavor", "Create", "Flavors")
+                    @Html.ActionLink("Add Treat", "Create", "Treats")
+                    @Html.ActionLink("View Flavors", "Index", "Flavors")
+                    @Html.ActionLink("View Treats", "Index", "Treats")
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+else
+{
+            <div id="nav-container">
+                <div id="dropdown-trigger">
+                    <span>Menu</span>
+                    <div id="dropdown-menu">
+                        <div id="dropdown-links-container">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    @Html.ActionLink("Log In", "Login", "Account")
+                    @Html.ActionLink("Register", "Register", "Account")
+                    @Html.ActionLink("View Flavors", "Index", "Flavors")
+                    @Html.ActionLink("View Treats", "Index", "Treats")
+                        </div>
+                    </div>
+                </div>
+            </div>
+}

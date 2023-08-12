@@ -2,7 +2,7 @@
     Layout = "_Layout";
 }
 
-<h2>Authentication</h2>
+<h2>Account</h2>
 <hr />
 @if (User.Identity.IsAuthenticated)
 {
@@ -11,13 +11,41 @@
     {
         <input type="submit" class="btn btn-primary" value="Log out" />
     }
+
+    <div id="nav-container">
+    <div id="dropdown-trigger">
+        <span>Menu</span>
+        <div id="dropdown-menu">
+            <div id="dropdown-links-container">
+                @Html.ActionLink("Home", "Index", "Home")
+                @Html.ActionLink("Add Flavor", "Create", "Flavors")
+                @Html.ActionLink("Add Treat", "Create", "Treats")
+                @Html.ActionLink("View Flavors", "Index", "Flavors")
+                @Html.ActionLink("View Treats", "Index", "Treats")
+            </div>
+        </div>
+    </div>
+</div>
 }
 else
 {
     <p>@Html.ActionLink("Register", "Register")</p>
     <p>@Html.ActionLink("Log in", "Login")</p>
-}
-
-<div id="nav-links">
     <p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+
+    <div id="nav-container">
+    <div id="dropdown-trigger">
+        <span>Menu</span>
+        <div id="dropdown-menu">
+            <div id="dropdown-links-container">
+                @Html.ActionLink("Home", "Index", "Home")
+                @Html.ActionLink("Log In", "Login", "Account")
+                @Html.ActionLink("Register", "Register", "Account")
+                @Html.ActionLink("View Flavors", "Index", "Flavors")
+                @Html.ActionLink("View Treats", "Index", "Treats")
+            </div>
+        </div>
+    </div>
 </div>
+}
