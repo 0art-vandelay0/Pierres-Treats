@@ -5,10 +5,14 @@
 <h1 id="home-page-title">Pierre's Treats</h1>
 
 <div id="home-page-overview">
-    <p>For your sweet treat needs!</p>
-    <p>---.</p>
+    <p>Welcome back to Pierre's Bakery!
+
+        On this site you can browse all of our treats and their flavors and also check our list of flavors we use and which treats contain them.
+
+        Use the Dropdown menu in the upper right hand corner to navigate accross the site. We use authentication so register and log in to add treats and flavors, or just browse if you prefer to not create an account.
+    </p>
     <p id="home-page-overview-disclaimer">
-        Use the links at the bottom of this page to navigate.
+        Use the dropdown menu in the upper right hand corner to navigate.
     </p>
 </div>
 
@@ -28,6 +32,7 @@
                 @Html.ActionLink("Add Treat", "Create", "Treats")
                 @Html.ActionLink("View Flavors", "Index", "Flavors")
                 @Html.ActionLink("View Treats", "Index", "Treats")
+                @Html.ActionLink("Log Out", "Index", "Account")
             </div>
         </div>
     </div>
