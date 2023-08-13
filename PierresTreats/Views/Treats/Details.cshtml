@@ -6,24 +6,24 @@
 @model PierresTreats.Models.Treat
 
 
-<div id="object-deets">
-    <h1 class="display-name">@Html.DisplayFor(model => model.Name)<h1>
 
-    @if (@Model.JoinEntities.Count == 0)
-            {
-                            <h3>This treat is not yet associated with any flavors.</h3>
-            }
-            else
-            {
-                                <h3>Flavors:</h3>
-                                <ul class="treat-flavor-link">
-                    @foreach (var flavor in Model.JoinEntities)
-                    {
-                                                        <li class="list-margins">@Html.ActionLink($"{flavor.Flavor.Name}", "Details", "Flavors", new {id = flavor.FlavorId})</li>
-                    }
-                                </ul>
-            }
-</div>
+<h1 class="display-name">@Model.Name<h1>
+
+@if (@Model.JoinEntities.Count == 0)
+{
+    <h3>This treat is not yet associated with any flavors.</h3>
+}
+else
+{
+    <h4>Flavors:</h4>
+    <ul class="treat-flavor-link">
+    @foreach (var flavor in Model.JoinEntities)
+    {
+        <li class="list-margins">@Html.ActionLink($"{flavor.Flavor.Name}", "Details", "Flavors", new {id = flavor.FlavorId})</li>
+    }
+    </ul>
+}
+
 
 @if (User.Identity.IsAuthenticated)
 {
@@ -39,6 +39,7 @@
                     @Html.ActionLink("Add Treat", "Create", "Treats")
                     @Html.ActionLink("View Flavors", "Index", "Flavors")
                     @Html.ActionLink("View Treats", "Index", "Treats")
+                    @Html.ActionLink("Log Out", "Index", "Account")
                     </div>
                 </div>
             </div>
