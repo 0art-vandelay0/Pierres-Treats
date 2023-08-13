@@ -14,25 +14,15 @@ namespace PierresTreats.Controllers
     public class FlavorsController : Controller
     {
         private readonly PierresTreatsContext _db;
-        private readonly UserManager<ApplicationUser> _userManager;
 
-        public FlavorsController(UserManager<ApplicationUser> userManager, PierresTreatsContext db)
+        public FlavorsController(PierresTreatsContext db)
         {
-            _userManager = userManager;
             _db = db;
         }
 
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            //             ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-            // #nullable enable
-            //             List<Flavor> userFlavors = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).Include(flavor => flavor.JoinEntities).ThenInclude(join => join.Treat).ToList();
-            // #nullable disable
-            //             return View(userFlavors);
-            ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-            List<Flavor> userFlavors = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).Include(flavor => flavor.JoinEntities).ThenInclude(join => join.Treat).ToList();
-            return View(userFlavors);
+            return View(_db.Flavors.ToList());
         }
 
         public ActionResult Create()
@@ -42,18 +32,14 @@ namespace PierresTreats.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(Flavor flavor, int TreatId)
+        public ActionResult Create(Flavor flavor)
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
                 return View(flavor);
             }
             else
             {
-                string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-                flavor.User = currentUser;
                 _db.Flavors.Add(flavor);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
