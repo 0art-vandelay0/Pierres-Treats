@@ -32,7 +32,7 @@ body {
     font-family: proxima-nova, sans-serif;
     color: white;
     margin-bottom: 60px;
-    background-image: url("../img/factory.jpg");
+    /* background-image: url(""); */
     background-repeat: no-repeat;
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.65);
