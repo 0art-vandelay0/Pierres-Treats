@@ -288,8 +288,24 @@ select#TreatId {
     margin-left: 10px;
 }
 
-#form-button {
+input#form-button {
     margin-top: 15px;
+    font-size: 18px;
+    text-shadow: 2px 2px 30px rgba(0, 0, 0, 0.7);
+    padding-left: 11px;
+    padding-right: 11px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    background-color: rgb(20, 105, 78);
+    border-radius: 10px;
+    border: 2px solid rgb(23, 124, 92);
+    box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 10px;
+}
+
+input#form-button:hover {
+    background-color: rgba(16, 16, 16, 0.871);
+    color: rgb(35, 194, 144);
 }
 
 label {
@@ -344,4 +360,26 @@ label {
     color: rgb(114, 196, 153);
 }
 
+.not-authorized {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: center;
+    font-size: 24px;
+    text-shadow: 1px 5px 30px rgba(0, 0, 0, 1);
+}
 
+.model-name-display {
+    display: inline-block;
+    padding: 8px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.188);
+}
