@@ -1,8 +1,8 @@
-# &#x1F4CB; **Pierre's Bakery and Treats** &#x1F4CB;
+# &#x1F36D; **Pierre's Bakery and Treats** &#x1F368;
 
 #### **By Casey Hill**
 
-#### A MVC database web application that allows users to browse menu items and flavors used in the items. &#x1F50C; &#x1F477; &#x1F527;
+#### A MVC database web application that allows users to browse menu items and flavors used in the items. &#x1F36C; &#x1F36E; &#x1F369;
 
 #### ...._"Good bread is the most fundamentally satisfying of all foods; and good bread with fresh butter, the greatest of feasts."_ - James Beard
 
@@ -36,7 +36,7 @@ Use the Dropdown menu in the upper right hand corner to navigate accross the sit
 <details>
 <summary> Initial Setup </summary>
 
--   Clone this repository to your local machine.
+-   Clone this repository to your local flavor.
     ```bash
     $ git clone https://github.com/0art-vandelay0/Pierres-Treats
     ```
@@ -48,11 +48,11 @@ Use the Dropdown menu in the upper right hand corner to navigate accross the sit
 <summary> Database Setup </summary>
 
 -   Use a MySql RDBMS like MySql Workbench to import/upload the `casey_hill.sql` file and create your database.
--   In your Factory Directory, create a file with the name `appsettings.json` and copy and past the following code into this file:
+-   In your 'PierresTreats' Directory, create a file with the name `appsettings.json` and copy and past the following code into this file:
 
     <pre><code>{
         "ConnectionStrings": {
-            "DefaultConnection": "Server=localhost;Port=3306;database=factory;uid=root;pwd=epicodus;"
+            "DefaultConnection": "Server=localhost;Port=3306;database=pierres-treats;uid=[YOUR-UID];pwd=[YOUR-PASSWORD];"
         }
     }
     </code></pre>
@@ -65,7 +65,13 @@ Use the Dropdown menu in the upper right hand corner to navigate accross the sit
 
 -   In your terminal:
 
-    Change directory (cd) to Factory.
+    From your root folder, change directory to PierresTreats.
+
+    ```bash
+    $ cd PierresTreats
+    ```
+
+    And enter the following commands:
 
     ```bash
     $ dotnet build
@@ -75,10 +81,10 @@ Use the Dropdown menu in the upper right hand corner to navigate accross the sit
     $ dotnet run
     ```
 
-    (or `dontnet watch run` to see edit and see edits in real time).
+    (or `dotnet watch run` to see edit and see edits in real time).
 
 -   A web page will automatically open in your browser
--   Use the navigation at the bottom of the page to view Engineers or Machines (both will be empty to start)
+-   Use the navigation at the bottom of the page to view Treats or Flavors (both will be empty to start)
 -   Follow the links based on what every your needs are.
 </details>
 
@@ -98,7 +104,7 @@ Use the Dropdown menu in the upper right hand corner to navigate accross the sit
         ```bash
         $ dotnet add package Pomelo.EntityFrameworkCore.MySql -v 6.0.0
         ```
--   Try creating a `global.json` file in the Factory dir that contains the following code to override the default version, if your version exceeds .NET 6.0:<br>
+-   Try creating a `global.json` file in the PierresTreats dir that contains the following code to override the default version, if your version exceeds .NET 6.0:<br>
     <pre><code>{
         "sdk": {
             "version": "6.0.402"
