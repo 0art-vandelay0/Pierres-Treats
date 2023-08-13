@@ -9,7 +9,7 @@
 
 @if (@Model.JoinEntities.Count == 0)
 {
-    <p>There are no treats of this flavor.</p>
+    <h3>There are no treats of this flavor.</h3>
 }
 else
 {
@@ -22,12 +22,40 @@ else
     </ul>
 }
 
-
+@if (User.Identity.IsAuthenticated)
+{
     <p class="add-to-list">@Html.ActionLink("Add Treat Here", "AddTreat", "Flavors", new {id = Model.FlavorId})</p>
 
-<div id="nav-links">
-    <p>@Html.ActionLink("Flavors", "Index", "Flavors")</p>
-    <p>@Html.ActionLink("Home", "Index", "Home")</p>
-    <p>@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
-    <p>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
-</div>
+    <div id="nav-container">
+            <div id="dropdown-trigger">
+                <span>Menu</span>
+                <div id="dropdown-menu">
+                    <div id="dropdown-links-container">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    @Html.ActionLink("Add Flavor", "Create", "Flavors")
+                    @Html.ActionLink("Add Treat", "Create", "Treats")
+                    @Html.ActionLink("View Flavors", "Index", "Flavors")
+                    @Html.ActionLink("View Treats", "Index", "Treats")
+                    @Html.ActionLink("Log Out", "Index", "Account")
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+else
+{
+            <div id="nav-container">
+                <div id="dropdown-trigger">
+                    <span>Menu</span>
+                    <div id="dropdown-menu">
+                        <div id="dropdown-links-container">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    @Html.ActionLink("Log In", "Login", "Account")
+                    @Html.ActionLink("Register", "Register", "Account")
+                    @Html.ActionLink("View Flavors", "Index", "Flavors")
+                    @Html.ActionLink("View Treats", "Index", "Treats")
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
