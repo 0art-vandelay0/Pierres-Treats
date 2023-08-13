@@ -44,6 +44,9 @@ else
                 </div>
             </div>
         </div>
+
+        <p class="add-to-list">@Html.ActionLink("Edit Details", "Edit", new {id = Model.TreatId})</p>
+        <p class="add-to-list">@Html.ActionLink("Delete Treat", "Delete", new {id = Model.TreatId})</p>
 }
 else
 {

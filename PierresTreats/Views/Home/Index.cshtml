@@ -18,15 +18,11 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-@* <div id="nav-links">
-    <p>@Html.ActionLink("Treats", "Index", "Treats")</p>
-    <p>@Html.ActionLink("Flavors", "Index", "Flavors")</p>
-</div> *@
-<div id="nav-container">
+        <div id="nav-container">
     <div id="dropdown-trigger">
         <span>Menu</span>
         <div id="dropdown-menu">
-            <div id="dropdown-links-container">
+                <div id="dropdown-links-container">
                 @Html.ActionLink("Home", "Index", "Home")
                 @Html.ActionLink("Add Flavor", "Create", "Flavors")
                 @Html.ActionLink("Add Treat", "Create", "Treats")
@@ -41,22 +37,22 @@
 else
 {
 
-    <p id="empty-value-div">
-    Please login or register to view or manage your order/account.
-</p>
-
-    <div id="empty-value-div">
-    <p>
-        @Html.ActionLink("Register", "Register", "Account")
-        &nbsp;&nbsp;|&nbsp;&nbsp; @Html.ActionLink("Log in", "Login", "Account")
+        <p id="empty-value-div">
+        Please login or register to view or manage your order/account.
     </p>
-</div>
 
-<div id="nav-container">
-    <div id="dropdown-trigger">
-        <span>Menu</span>
+            <div id="empty-value-div">
+            <p>
+                @Html.ActionLink("Register", "Register", "Account")
+            &nbsp;&nbsp;|&nbsp;&nbsp; @Html.ActionLink("Log in", "Login", "Account")
+            </p>
+        </div>
+    
+        <div id="nav-container">
+        <div id="dropdown-trigger">
+            <span>Menu</span>
         <div id="dropdown-menu">
-            <div id="dropdown-links-container">
+                <div id="dropdown-links-container">
                 @Html.ActionLink("Home", "Index", "Home")
                 @Html.ActionLink("Log In", "Login", "Account")
                 @Html.ActionLink("Register", "Register", "Account")
