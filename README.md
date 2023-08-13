@@ -85,7 +85,7 @@ Use the Dropdown menu in the upper right hand corner to navigate accross the sit
 
 -   A web page will automatically open in your browser
 -   Use the navigation at the bottom of the page to view Treats or Flavors (both will be empty to start)
--   Follow the links based on what every your needs are.
+-   Follow the links based on what ever your needs are.
 </details>
 
 #### Debugging
@@ -116,8 +116,7 @@ Use the Dropdown menu in the upper right hand corner to navigate accross the sit
 
 ## **Known Bugs**
 
--   There is currently neither a Delete nor Edit/Update functionality from within the program.
-    To delete or edit, use you RDBMS Software or Querey MySql Server at the command line with your existing local setup.
+-   No navigation links outside of the dropdown menu on most pages.
 
 ## License
 
