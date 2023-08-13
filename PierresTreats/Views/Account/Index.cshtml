@@ -6,7 +6,15 @@
 <hr />
 @if (User.Identity.IsAuthenticated)
 {
-    <p>Hello @User.Identity.Name!</p>
+    <h3>Hello @User.Identity.Name!</h3>
+    <br>
+    <p>You can now add flavors and <span id="inner-nav-link">@Html.ActionLink("HERE", "Create", "Flavors")</span></p>
+    <br>
+    <p>You can now add treats and <span id="inner-nav-link">@Html.ActionLink("HERE", "Create", "Treats")</span></p>
+    <br>
+    <p>or use the navigation dropdown menu.</p>
+    <br>
+
     @using (Html.BeginForm("LogOff", "Account"))
     {
         <input type="submit" class="btn btn-primary" value="Log out" />
