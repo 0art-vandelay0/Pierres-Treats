@@ -4,20 +4,54 @@
 
 @model PierresTreats.Models.Flavor
 
-<h3>Add Flavor</h3>
-@using (Html.BeginForm()) 
+@if (User.Identity.IsAuthenticated)
 {
-    @Html.LabelFor(model => model.Name)
-    <br>
-    @Html.TextBoxFor(model => model.Name)
-    <br>
+    <h3>Add Flavor</h3>
+    @using (Html.BeginForm()) 
+    {
+        @Html.LabelFor(model => model.Name)
+        <br>
+        @Html.TextBoxFor(model => model.Name)
+        <br>
 
-    <input id="form-button" type="submit" value="Add" />
+        <input id="form-button" type="submit" value="Add" />
 
-    <p class="invalid-input">@Html.ValidationMessageFor(model => model.Name)</p>
+        <p class="invalid-input">@Html.ValidationMessageFor(model => model.Name)</p>
+
+        <div id="nav-container">
+            <div id="dropdown-trigger">
+                <span>Menu</span>
+                <div id="dropdown-menu">
+                    <div id="dropdown-links-container">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    @Html.ActionLink("Add Flavor", "Create", "Flavors")
+                    @Html.ActionLink("Add Treat", "Create", "Treats")
+                    @Html.ActionLink("View Flavors", "Index", "Flavors")
+                    @Html.ActionLink("View Treats", "Index", "Treats")
+                    @Html.ActionLink("Log Out", "Index", "Account")
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 }
+else
+{
+    <h3>You must be logged in to add a flavor.</h3>
 
-<div id="nav-links">
-    <p>@Html.ActionLink("Home", "Index", "Home")</p>
-</div>
+    <div id="nav-container">
+                <div id="dropdown-trigger">
+                    <span>Menu</span>
+                    <div id="dropdown-menu">
+                        <div id="dropdown-links-container">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    @Html.ActionLink("Log In", "Login", "Account")
+                    @Html.ActionLink("Register", "Register", "Account")
+                    @Html.ActionLink("View Flavors", "Index", "Flavors")
+                    @Html.ActionLink("View Treats", "Index", "Treats")
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
 
