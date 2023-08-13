@@ -2,31 +2,27 @@
     Layout = "_Layout";
 }
 
-@using PierresTreats.Models
 @model PierresTreats.Models.Flavor
-
-<h1 class="display-name">@Model.Name</h1>
-
-@if (@Model.JoinEntities.Count == 0)
-{
-    <h3>There are no treats of this flavor.</h3>
-}
-else
-{
-    <h4>Treats of this flavor:</h4>
-    <ul class="treat-flavor-link">
-        @foreach (var treat in Model.JoinEntities)
-        {
-            <li class="list-margins">@Html.ActionLink($"{treat.Treat.Name}", "Details", "Treats", new {id = treat.TreatId})</li>
-        }
-    </ul>
-}
 
 @if (User.Identity.IsAuthenticated)
 {
-    <p class="add-to-list">@Html.ActionLink("Add Treat Here", "AddTreat", "Flavors", new {id = Model.FlavorId})</p>
+    <h3>Edit Flavor Details</h3>
+    @using (Html.BeginForm()) 
+    {
 
-    <div id="nav-container">
+        @Html.HiddenFor(model => model.FlavorId)
+        <br>
+
+        @Html.LabelFor(model => model.Name)
+        <br>
+        @Html.TextBoxFor(model => model.Name)
+        <br>
+
+        <input type="submit" value="Save" />
+
+        <p class="invalid-input">@Html.ValidationMessageFor(model => model.Name)</p>
+
+        <div id="nav-container">
             <div id="dropdown-trigger">
                 <span>Menu</span>
                 <div id="dropdown-menu">
@@ -41,13 +37,15 @@ else
                 </div>
             </div>
         </div>
-
-        <p class="add-to-list">@Html.ActionLink("Edit Details", "Edit", new {id = Model.FlavorId})</p>
-        <p class="add-to-list">@Html.ActionLink("Delete Flavor", "Delete", new {id = Model.FlavorId})</p>
+    }
 }
 else
 {
-            <div id="nav-container">
+    <h2 class="not-authorized">You must be logged in to edit Flavors.</h2>
+    
+    <p>@Html.ActionLink("Log in", "Login", "Account")</p>
+
+    <div id="nav-container">
                 <div id="dropdown-trigger">
                     <span>Menu</span>
                     <div id="dropdown-menu">
