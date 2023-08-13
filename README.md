@@ -81,7 +81,7 @@ Use the Dropdown menu in the upper right hand corner to navigate accross the sit
     $ dotnet run
     ```
 
-    (or `dotnet watch run` to see edit and see edits in real time).
+    (or `dotnet watch run` to view and see edits in real time).
 
 -   A web page will automatically open in your browser
 -   Use the navigation at the bottom of the page to view Treats or Flavors (both will be empty to start)
