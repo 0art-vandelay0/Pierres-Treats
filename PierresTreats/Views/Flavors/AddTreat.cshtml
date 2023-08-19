@@ -1,0 +1,55 @@
+@{
+    Layout = "_Layout";
+}
+
+@model PierresTreats.Models.Flavor
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>Add a Treat associated with this Flavor</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.FlavorId)
+        @Html.Label("Select an Treat")
+        @Html.DropDownList("TreatId")
+        <br>
+
+        <input id="form-button" type="submit" value="Save" />
+
+        <div id="nav-container">
+            <div id="dropdown-trigger">
+                <span>Menu</span>
+                <div id="dropdown-menu">
+                    <div id="dropdown-links-container">
+                    @Html.ActionLink("Home", "Index", "Home")
+                    @Html.ActionLink("Add Flavor", "Create", "Flavors")
+                    @Html.ActionLink("Add Treat", "Create", "Treats")
+                    @Html.ActionLink("View Flavors", "Index", "Flavors")
+                    @Html.ActionLink("View Treats", "Index", "Treats")
+                    @Html.ActionLink("Log Out", "Index", "Account")
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <h3>You must be logged in to add a Treat.</h3>
+
+    <div id="nav-container">
+        <div id="dropdown-trigger">
+            <span>Menu</span>
+            <div id="dropdown-menu">
+                <div id="dropdown-links-container">
+            @Html.ActionLink("Home", "Index", "Home")
+            @Html.ActionLink("Log In", "Login", "Account")
+            @Html.ActionLink("Register", "Register", "Account")
+            @Html.ActionLink("View Flavors", "Index", "Flavors")
+            @Html.ActionLink("View Treats", "Index", "Treats")
+                </div>
+            </div>
+        </div>
+    </div>
+}
