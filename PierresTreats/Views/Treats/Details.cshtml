@@ -5,8 +5,6 @@
 @using PierresTreats.Models
 @model PierresTreats.Models.Treat
 
-
-
 <h1 class="display-name">@Model.Name<h1>
 
 @if (@Model.JoinEntities.Count == 0)
@@ -15,7 +13,7 @@
 }
 else
 {
-    <h4>Flavors:</h4>
+    <h4>Flavors in this treat:</h4>
     <ul class="treat-flavor-link">
     @foreach (var flavor in Model.JoinEntities)
     {
@@ -27,26 +25,27 @@ else
 
 @if (User.Identity.IsAuthenticated)
 {
-        <p class="add-to-list">@Html.ActionLink("Add Flavor Here", "AddFlavor", "Treats", new {id = Model.TreatId})</p>
+    <div id="add-to-list-div">
+        <p class="add-to-list">@Html.ActionLink("Add Flavor to treat", "AddFlavor", "Treats", new {id = Model.TreatId})</p>
+        <p class="add-to-list">@Html.ActionLink("Edit Details", "Edit", new {id = Model.TreatId})</p>
+        <p class="add-to-list">@Html.ActionLink("Delete Treat", "Delete", new {id = Model.TreatId})</p>
+    </div>
 
-        <div id="nav-container">
-            <div id="dropdown-trigger">
-                <span>Menu</span>
-                <div id="dropdown-menu">
-                    <div id="dropdown-links-container">
-                    @Html.ActionLink("Home", "Index", "Home")
-                    @Html.ActionLink("Add Flavor", "Create", "Flavors")
-                    @Html.ActionLink("Add Treat", "Create", "Treats")
-                    @Html.ActionLink("View Flavors", "Index", "Flavors")
-                    @Html.ActionLink("View Treats", "Index", "Treats")
-                    @Html.ActionLink("Log Out", "Index", "Account")
-                    </div>
+    <div id="nav-container">
+        <div id="dropdown-trigger">
+            <span>Menu</span>
+            <div id="dropdown-menu">
+                <div id="dropdown-links-container">
+                @Html.ActionLink("Home", "Index", "Home")
+                @Html.ActionLink("Add Flavor", "Create", "Flavors")
+                @Html.ActionLink("Add Treat", "Create", "Treats")
+                @Html.ActionLink("View Flavors", "Index", "Flavors")
+                @Html.ActionLink("View Treats", "Index", "Treats")
+                @Html.ActionLink("Log Out", "Index", "Account")
                 </div>
             </div>
         </div>
-
-        <p class="add-to-list">@Html.ActionLink("Edit Details", "Edit", new {id = Model.TreatId})</p>
-        <p class="add-to-list">@Html.ActionLink("Delete Treat", "Delete", new {id = Model.TreatId})</p>
+    </div>
 }
 else
 {

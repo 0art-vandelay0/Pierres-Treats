@@ -24,7 +24,11 @@ else
 
 @if (User.Identity.IsAuthenticated)
 {
-    <p class="add-to-list">@Html.ActionLink("Add Treat Here", "AddTreat", "Flavors", new {id = Model.FlavorId})</p>
+    <div id="add-to-list-div">
+        <p class="add-to-list">@Html.ActionLink("Add Treat of this flavor", "AddTreat", "Flavors", new {id = Model.FlavorId})</p>
+        <p class="add-to-list">@Html.ActionLink("Edit Details", "Edit", new {id = Model.FlavorId})</p>
+        <p class="add-to-list">@Html.ActionLink("Delete Flavor", "Delete", new {id = Model.FlavorId})</p>
+    </div>
 
     <div id="nav-container">
             <div id="dropdown-trigger">
@@ -41,9 +45,6 @@ else
                 </div>
             </div>
         </div>
-
-        <p class="add-to-list">@Html.ActionLink("Edit Details", "Edit", new {id = Model.FlavorId})</p>
-        <p class="add-to-list">@Html.ActionLink("Delete Flavor", "Delete", new {id = Model.FlavorId})</p>
 }
 else
 {
